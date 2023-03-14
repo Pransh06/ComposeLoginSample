@@ -32,7 +32,6 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background) {
-                    //Greeting("Android")
                     LoginUI(context = applicationContext)
                 }
             }
@@ -45,7 +44,7 @@ fun LoginUI(context: Context){
     var email by remember {mutableStateOf("")}
     var password by remember {mutableStateOf("")}
 
-    Column(     //since in the UI we need to arrange items vertically one after another we use column tag
+    Column(                                                  //since in the UI we need to arrange items vertically one after another we use column tag
         modifier = Modifier.fillMaxSize().padding(20.dp),   //padding in the entire container
         verticalArrangement = Arrangement.Center) {         //aligning the elements at the center for the whole container
         Text(
@@ -56,14 +55,14 @@ fun LoginUI(context: Context){
             fontSize = 30.sp,
             color = Color.Black,
             modifier = Modifier
-                .fillMaxWidth()            //match parent
+                .fillMaxWidth()                             //match parent
                 .padding(bottom = 20.dp)
         )
 
         OutlinedTextField(
             value = email,
             onValueChange = {
-                email = it},
+                email = it},                                    //when the value changes in the edit text it will be directly observed
             label = {Text("Email")},
             placeholder = {Text(text = "Enter your email")},
             leadingIcon = {
@@ -87,7 +86,7 @@ fun LoginUI(context: Context){
                 .fillMaxWidth()
                 .padding(top = 10.dp, bottom = 10.dp),
             visualTransformation = PasswordVisualTransformation(),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)     //giving the input type as password so that it is hidden
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)         //giving the input type as password so that it is hidden
         )
 
         OutlinedButton(onClick = { checkCredentials(email,password,context)},
