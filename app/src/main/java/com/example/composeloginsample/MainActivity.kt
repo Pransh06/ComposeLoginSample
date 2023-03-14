@@ -45,7 +45,7 @@ fun LoginUI(context: Context){
     var email by remember {mutableStateOf("")}
     var password by remember {mutableStateOf("")}
 
-    Column(
+    Column(     //since in the UI we need to arrange items vertically one after another we use column tag
         modifier = Modifier.fillMaxSize().padding(20.dp),   //padding in the entire container
         verticalArrangement = Arrangement.Center) {         //aligning the elements at the center for the whole container
         Text(
@@ -62,7 +62,8 @@ fun LoginUI(context: Context){
 
         OutlinedTextField(
             value = email,
-            onValueChange = {email = it},
+            onValueChange = {
+                email = it},
             label = {Text("Email")},
             placeholder = {Text(text = "Enter your email")},
             leadingIcon = {
@@ -70,12 +71,13 @@ fun LoginUI(context: Context){
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 10.dp) // match parent
+                .padding(top = 10.dp)
         )
 
         OutlinedTextField(
             value = password,
-            onValueChange = {password = it},
+            onValueChange = {
+                password = it},
             label = {Text("Password")},
             placeholder = { Text(text = "Enter your password")},
             leadingIcon = {
@@ -83,9 +85,9 @@ fun LoginUI(context: Context){
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 10.dp, bottom = 10.dp), // match parent
+                .padding(top = 10.dp, bottom = 10.dp),
             visualTransformation = PasswordVisualTransformation(),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)     //giving the input type as password so that it is hidden
         )
 
         OutlinedButton(onClick = { checkCredentials(email,password,context)},
