@@ -46,16 +46,17 @@ fun LoginUI(context: Context){
     var password by remember {mutableStateOf("")}
 
     Column(
-        modifier = Modifier.fillMaxSize().padding(20.dp),
-        verticalArrangement = Arrangement.Center) {
-        Text(text = "Login Here!",
+        modifier = Modifier.fillMaxSize().padding(20.dp),   //padding in the entire container
+        verticalArrangement = Arrangement.Center) {         //aligning the elements at the center for the whole container
+        Text(
+            text = "Login Here!",
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.SemiBold,
             textAlign = TextAlign.Center,
             fontSize = 30.sp,
             color = Color.Black,
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxWidth()            //match parent
                 .padding(bottom = 20.dp)
         )
 
@@ -63,7 +64,7 @@ fun LoginUI(context: Context){
             value = email,
             onValueChange = {email = it},
             label = {Text("Email")},
-            placeholder = { Text(text = "Enter your email")},
+            placeholder = {Text(text = "Enter your email")},
             leadingIcon = {
                 Icon(Icons.Default.Email, contentDescription = "email")
             },
@@ -90,7 +91,8 @@ fun LoginUI(context: Context){
         OutlinedButton(onClick = { checkCredentials(email,password,context)},
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0XFF0F78D1)),
             modifier = Modifier.fillMaxWidth().height(60.dp).padding(top = 15.dp)) {
-            Text(text = "Login",
+            Text(
+                text = "Login",
                 color = Color.White,
                 textAlign = TextAlign.Center)
         }
